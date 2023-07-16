@@ -48,7 +48,8 @@ class OutputPlot(Figure):
         self.graph.xaxis.labelpad = 2
         self.graph.yaxis.labelpad = 2
         self.canvas = FigureCanvasTkAgg(self, master=master)
-        self.canvas.show()
+        #self.canvas.show()
+        self.canvas.draw()
         self.canvas.get_tk_widget().grid(column=0, row=0)
         # Remove scientific notation from edges of axes (will be added to axis titles when plot limits are known)
         self.graph.xaxis.offsetText.set_visible(False)
@@ -91,13 +92,16 @@ class OutputPlot(Figure):
         self.graph.set_xlabel(x_label)
         self.graph.set_ylabel(y_label)
         self.tight_layout(rect=(0, 0, 1, top), pad=0.5)  # Second tight-layout adjusts for the new axis titles
-        self.canvas.show()
+        #self.canvas.show()
+        self.canvas.draw()
 
 ##############################################################################################################################
-    def clear_plot(self):
+    def clear_plot(self): #TODO
         """Remove all lines from plot."""
+        #self.graph.lines = []
+        for line in self.graph.lines:
+            line.remove()
 
-        self.graph.lines = []
 
 ##############################################################################################################################
     def update_plot(self):

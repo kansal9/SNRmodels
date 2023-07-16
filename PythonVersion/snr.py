@@ -10,6 +10,8 @@ import snr_gui as gui
 import snr_calc as calc
 import snr_plot as plt
 import math
+from helpers import *
+from snr_emissivity import *
 
 # To create executable:
 # pyinstaller --noconfirm --log-level=ERROR filename.spec
@@ -439,7 +441,7 @@ def emissivity_window():
     left_frame = gui.LayoutFrame(window.container, 5)
     right_frame = gui.LayoutFrame(window.container, 5, column=1, row=0)
     root_id = str(window.root)
-    SNR_EM = calc.SNREmissivity(SNR, root_id)
+    SNR_EM = SNREmissivity(SNR, root_id)
     gui.InputParam.instances[root_id] = {}
     widgets = gui.InputParam.instances[root_id]
     gui.SectionTitle(right_frame, "Output Plots:")
