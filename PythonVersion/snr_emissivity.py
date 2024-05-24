@@ -42,7 +42,7 @@ class SNREmissivity:
         self.cnst["luminosity"] = self.data["T_s"] * BOLTZMANN / PLANCK * self.cnst["spectrum"]
         self.root = root
         
-        if(((snr.data["t"] <= snr.calc["t_st"]) or (snr.data["s"] == 2)) and snr.data["model"] != "sedtay"):
+        if((snr.data["t"] <= snr.calc["t_st"]) or (snr.data["s"] == 2)):
             self.data["model"] = "chev"
             if snr.data["s"] == 0:
                 if snr.data["n"] >= 6:
@@ -78,7 +78,7 @@ class SNREmissivity:
             self._s_point = self._chev_s_point
             self._opt_dict = self._chev_opt_dict
             
-        elif (snr.data["model"] == "cism" or snr.data["model"] == "sedtay" ):
+        elif (snr.data["model"] == "cism"):
             self.data["model"] = "cism"
             self.data["c_tau"] = snr.data["c_tau"]
             self.data["em_point"] = []
@@ -157,7 +157,8 @@ class SNREmissivity:
             output = {"lum": lum, "em": em[0], "Tem": em[1]}
             
         #if (self.widgets["model"].get_value() == "cism" and self.widgets["c_tau"].get_value() == 0):
-        if (self.widgets["model"] == "cism" and self.widgets["c_tau"] == 0):            gui.OutputValue.update(output, self.root, 1)
+        if (self.widgets["model"] == "cism" and self.widgets["c_tau"] == 0):
+            gui.OutputValue.update(output, self.root, 1)
         else:
             gui.OutputValue.update(output, self.root, 0)
         

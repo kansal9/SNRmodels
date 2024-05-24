@@ -131,7 +131,7 @@ class TimePlot(OutputPlot):
             size (tuple): width and height of plot in inches
         """
 
-        self.ylabel_dict = {"v": r"Velocity/km s$^{-1}$", "r": "Radius/pc", "eMeas": "Emission Measure/cm^-3", "temper": "Temperature/keV"}
+        self.ylabel_dict = {"v": r"Velocity/km s$^{-1}$", "r": "Radius/pc", "eMeas": "Emission Measure/cm^-3", "temper": "Temperature/k"}
         # Set default to radius graph
         self.ylabel = self.ylabel_dict["r"]
         OutputPlot.__init__(self, master, size, "Time/yr", self.ylabel)
